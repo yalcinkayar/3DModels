@@ -19,15 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/api/product', [App\Http\Controllers\api\product\indexController::class, 'index'])->name('product');
-//Route::get('/api/product/{productId}', [App\Http\Controllers\api\product\indexController::class, 'show'])->name('product-detail');
-
 Route::resource('/demand', '\App\Http\Controllers\DemandController')->middleware(['auth']);
 Route::get('/demand.status/{demandId}/{statusId}', [\App\Http\Controllers\DemandController::class,'status'])
 ->name('demand.status')
 ->middleware(['auth']);
 
-//Route::resource('/product', 'App\Http\Controllers\ProductController');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('admin.login', [\App\Http\Controllers\admin\AuthController::class, 'login'])->name('admin.login'); 
 Route::post('admin.register', [\App\Http\Controllers\admin\AuthController::class, 'admin_register'])->name('admin.register'); 
